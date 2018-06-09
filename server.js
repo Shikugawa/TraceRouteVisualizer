@@ -7,7 +7,7 @@ var http = require('http');
 //   ]
 // }
 http.createServer((req, res) => {
-  const endpoint = "https://geoip.maxmind.com/geoip/v2.1/city/";
+  const endpoint = "https://geoip.maxmind.com/geoip/v2.1/insights/";
   const headers = {
     'Authorization': process.env.GeoipAccessToken,
     'Content-Type': 'application/vnd.maxmind.com-insights+json; charset=UTF-8; version=2.1'
@@ -34,7 +34,7 @@ http.createServer((req, res) => {
           return;
         }else{
           response.location.push(
-            [value.location.latitude, value.location.longitude]
+            [value.location.longitude, value.location.latitude]
           )
         }
       })
